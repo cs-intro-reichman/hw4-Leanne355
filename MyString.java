@@ -13,7 +13,7 @@ public class MyString {
         //System.out.println(contains("psychology", "psycho")); // true
         //System.out.println(contains("personality", "son")); // true
         //System.out.println(contains("personality", "dad")); // false
-        System.out.println(contains("we need to leverage our core competencies", "synergy")); // true
+        System.out.println(contains("Our new technology presents a significant paradigm shift", "Paradigm")); // true
     }
 
     /** Returns the lowercase version of the given string. */
