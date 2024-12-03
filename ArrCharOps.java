@@ -3,8 +3,8 @@
 public class ArrCharOps {
     public static void main(String[] args) {
         String str = "clearly";
-        char[] arr1 = {'c','l','e','a','r','l','y'};
-        char[] arr2 = {'U','n','d','e','r','s','t', 'o', 'o', 'd'};
+        char[] arr1 = {'I',' ','a','m',' ','t','h','e'};
+        char[] arr2 = {'e','g','g','m','a','n'};
         System.out.println(str);  // Prints the string
         println(arr1);            // Prints an array of characters
         System.out.println(charAt(arr1,2));      
@@ -19,9 +19,10 @@ public class ArrCharOps {
         System.out.println(compareTo("Abcd", "a"));
         System.out.println(compareTo("apple", "banana"));
         System.out.println(compareTo("apple", "applepie"));
-        System.out.println(compareTo("Zoo", "zoo"));
+        System.out.println(compareTo("zoo", "Zoo"));
         System.out.println(hashCode(arr1));
         System.out.println(hashCode(arr2));
+    
     }
 
     /** Prints the given array of characters, and moves the cursor to the next line.
@@ -54,10 +55,10 @@ public class ArrCharOps {
                     equal = true;
                     } else{
                     equal = false;
+                    break;
                     }
                 }   
             }
-           
         }
         return equal;  
     }
@@ -108,37 +109,15 @@ public class ArrCharOps {
     /* Returns an array which is the concatanation of the two given arrays.
     */
     public static char[] concat(char[] arr1, char[] arr2) {
-        int length = arr1.length + arr2.length + 2;
-        char [] arr3 = new char [length];
-        int arr2Start = 0;
-        for (int i = 0; i <= arr1.length; i++){
-            if(i != arr1.length){
-                arr3[i] = arr1[i];
-            } else { 
-                arr3[i] = ',';
-                arr3[i + 1 ] = ' ';
-                arr2Start = i+2;
-            }
+        char [] arr3 = new char [arr1.length + arr2.length];
+        for ( int i = 0; i < arr1.length; i++){
+            arr3[i] = arr1[i];
         }
-        for (int j = arr2Start ; j < (arr2.length + arr2Start); j++){
-                arr3[j] = arr2[j-arr2Start];
-         } 
-         if(arr2.length == 0){
-            if(arr1.length == 0){
-                arr3 =  new char[0];
-            } else{
-                arr3 = arr1;
-            }
-         }
-            if(arr1.length == 0){
-                if(arr2.length == 0){
-                    arr3 =  new char[0];
-                } else{
-                    arr3 = arr2;
-                }
-            }   
+        for ( int i = arr1.length; i < arr2.length + arr1.length; i++ ){
+            arr3[i] = arr2[i-arr1.length];
+        }
         return arr3;
-    }
+}
 
     /** Returns a new array that can be described as a sub-array of this array.
      *  The sub-array begins at the specified beginIndex and extends to the character at index endIndex - 1.
@@ -227,12 +206,17 @@ public class ArrCharOps {
         }
         if (length == str1.length() && length == str2.length() && returnValue == 0){
             returnValue = 0;
-        }
-        if (length == str1.length() && returnValue == 0){
+        } else { 
+            if (length == str1.length() && returnValue == 0){
             returnValue = -1;
+        } else{ 
+            if (length == str2.length() && returnValue == 0){
+                returnValue = 1;
         }
-        if (length == str2.length() && returnValue == 0){
-            returnValue = 1;
+        if (str1.length() == 0 || str2.length() == 0){
+            returnValue = -2;
+        }
+        }
         }
     return returnValue;
 }}
